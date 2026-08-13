@@ -2,6 +2,8 @@
 
 A responsive e-commerce technical assignment built with Next.js, TypeScript, Tailwind CSS, Zustand, and the [DummyJSON Products API](https://dummyjson.com/docs/products).
 
+**Live demo:** [arts-storefront.vercel.app](https://arts-storefront.vercel.app/)
+
 ## Features
 
 - Server-rendered, searchable product catalogue sourced from DummyJSON
@@ -116,4 +118,7 @@ Tailwind CSS provides the responsive layout and interaction states. The visual d
 
 ## Deployment
 
-The project is ready for Vercel's standard Next.js deployment flow and does not require environment variables. Import the Git repository into Vercel and use the default build settings; Vercel detects Bun from the committed `bun.lock` and `packageManager` field.
+The production deployment is available at [arts-storefront.vercel.app](https://arts-storefront.vercel.app/).
+
+The project uses Vercel's standard Next.js deployment flow and does not require environment
+variables. Vercel detects Bun from the committed `bun.lock` and `packageManager` field.
