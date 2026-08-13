@@ -1,26 +1,140 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --canvas: #f7f5ef;
+  --surface: #efede6;
+  --ink: #191a17;
+  --muted: #696a64;
+  --line: #dcd9d0;
+  --accent: #bd583c;
+  --accent-soft: #f1ded6;
+  --sage: #526a59;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-sage: var(--sage);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  background: var(--canvas);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:not(:disabled),
+[role='button']:not([aria-disabled='true']) {
+  cursor: pointer;
+}
+
+@keyframes qty-pop {
+  from {
+    transform: translateY(0.3rem) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.qty-pop {
+  animation: qty-pop 0.25s ease-out;
+}
+
+@keyframes overview-pop {
+  from {
+    transform: translateY(-0.4rem) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.overview-pop {
+  animation: overview-pop 0.2s ease-out;
+}
+
+@keyframes catalog-select-in {
+  from {
+    transform: translateY(-0.35rem) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.catalog-select-menu {
+  transform-origin: top center;
+  animation: catalog-select-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dialog-pop {
+  from {
+    transform: translateY(0.75rem) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes backdrop-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+dialog.confirm-dialog {
+  animation: dialog-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+dialog.confirm-dialog::backdrop {
+  animation: backdrop-fade 0.3s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

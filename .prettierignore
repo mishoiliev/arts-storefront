@@ -1,0 +1,10 @@
+.next
+node_modules
+build
+coverage
+dist
+out
+output
+playwright-report
+test-results
+bun.lock
